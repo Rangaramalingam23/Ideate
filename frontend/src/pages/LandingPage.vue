@@ -1,4 +1,3 @@
-<!-- landingpage.vue -->
 <template>
   <div class="landing-page">
     <header class="header">
@@ -6,8 +5,8 @@
         <span class="logo-icon">💡</span> Ideate
       </div>
       <nav class="nav">
-        <a href="#" class="sign-in">Sign In</a>
-        <button class="get-started">Get Started</button>
+        <router-link to="/login" class="sign-in">Sign In</router-link>
+        <button class="get-started" @click="navigateToSignup">Get Started</button>
       </nav>
     </header>
 
@@ -15,7 +14,7 @@
       <h1 class="hero-title">Collaborate to<br>Create Innovation</h1>
       <p class="hero-subtitle">Bridge the gap between ideators, developers, and backers. Transform innovative ideas into reality through seamless collaboration and funding.</p>
       <div class="hero-buttons">
-        <button class="primary-btn">Get Started Today →</button>
+        <button class="primary-btn" @click="navigateToSignup">Get Started Today →</button>
         <button class="secondary-btn">Explore Projects</button>
       </div>
     </section>
@@ -138,6 +137,13 @@
 
 <script setup>
 import { onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+const navigateToSignup = () => {
+  router.push('/signup');
+};
 
 onMounted(() => {
   const sections = document.querySelectorAll('.section-animate');
